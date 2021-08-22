@@ -197,20 +197,20 @@ You may update both simultaneously from Visual Studio by selecting.
 
 What is the difference between Git and GitHub?
 
- - Answer: sksodjrjxmcnru
+ - Answer: The difference between Git and GitHub is that Git is an open-source distributed version control system designed to track changes in a file system. Meanwhile, GitHub is a software in which programmers share their codes with other people in the rest of the world.    
 
 
 What is the difference between a git commit and a git push?
 
- - Answer:
+ - Answer: The difference between a git commit and a git push is that a git commit saves every modification made in a file on your local machine to the local repository. In the other hand, a git push is to upload all pending commits to your remote repository. 
 
 What is the difference between a pull, and an upstream pull?
 
- - Answer:
+ - Answer: The difference between a pull and an upstream pull is that a pull is when your uploading your local copy with the changes that have been made on the remote edition, and an upstream pull is when you copy the repository. 
 
 What part of these instructions was unclear or incomplete?
 
- - Answer:
+ - Answer: In my opinion, all of the instructions could been understood by the student. 
 
 Type down any class notes below this sentence:
 
