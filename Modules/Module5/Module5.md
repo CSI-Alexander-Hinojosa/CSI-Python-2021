@@ -80,11 +80,18 @@ print(f"Computer selected: {computerChoice}")
 
 Give a python example for each logic operator in the module image.
 
- - Answers:
-   - OR:
-   - AND: 
+ - Answers: (Today we have school?)
+ ThereisSchool=True
+ Friday=False
+   - OR: 
+   if Thereisschool or Friday:
+   Print-("It depends on the school schedule")  
+   - AND:
+   if ThereisSchool and Friday:
+   print-("Today is still school")   
    - NOT: 
-
+   if not Friday:
+   Print-("Today is school")
 
 Type down any class notes below this sentence:
 
