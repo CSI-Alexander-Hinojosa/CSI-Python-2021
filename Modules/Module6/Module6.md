@@ -57,16 +57,18 @@ myObject = ExperimentData(**experimentJson)
 
 What does JSON Stand for?
 
- - Answer:
+ - Answer: JSON stands for "JavaScript Object Notation".
 
 Why are JSON formats important?
 
- - Answer:
+ - Answer: The JSON format is important to store and exchange data around.
 
 Create an example of a JSON object with at least 4 values. It may represent anything but it must be original.
 
  - Answer:
-
+{
+"studentName":"Alexander", ageofstudent: 14, "Grade": "9th grade"
+}
 Type down any class notes below this sentence:
 
 
