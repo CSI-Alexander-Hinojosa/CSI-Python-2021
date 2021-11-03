@@ -69,6 +69,14 @@ Research data persistance. What did you find?
 
  - Answer: 
 
+What is the difference between serialization and deserialization?
+
+ - Answer:
+
+Research data persistance. What did you find?
+
+ - Answer: 
+
 Type down any class notes below this sentence:
 
 
