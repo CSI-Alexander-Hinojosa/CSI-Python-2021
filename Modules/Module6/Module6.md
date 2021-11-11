@@ -97,19 +97,12 @@ Create an example of a JSON object with at least 4 values. It may represent anyt
 
 What is the difference between serialization and deserialization?
 
- - Answer:
+ - Answer: The difference between serialization and deserialization is that one is serve to converting an object into a string representing an object, meanwhile the other one is converting a string into an object.
 
 Research data persistance. What did you find?
 
- - Answer: 
+ - Answer: When I search data persistance, I found a blog, https://www.datastax.com/blog/what-persistence-and-why-does-it-matter, that talk about the subject. Describing the subject as: "Persistence is "the continuance of an effect after its cause is removed". In the context of storing data in a computer system, this means that the data survives after the process with which it was created has ended. In other words, for a data store to be considered persistent, it must write to non-volatile storage," according to (Matt Pfeil on October 23, 2010). 
 
-What is the difference between serialization and deserialization?
-
- - Answer:
-
-Research data persistance. What did you find?
-
- - Answer: 
 
 Type down any class notes below this sentence:
 
