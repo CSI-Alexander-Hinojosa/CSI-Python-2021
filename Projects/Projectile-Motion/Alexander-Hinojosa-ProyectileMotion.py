@@ -1,9 +1,9 @@
 import math
 from ExperimentalData import ExperimentalData 
-
+import os
 from pathlib import Path 
 import json
-import os
+
 
 # gun= "AS VAL"
 # caliber= "9x39mm"
@@ -17,14 +17,6 @@ import os
 
 
 def ProyectileFunction(experimentalData:ExperimentalData):
-    time_s = math.sqrt ((2*experimentalData.BuildingHeight) / experimentalData.gravity_Ms)
-    distance= (experimentalData.velocity_ms*time_s)
-    #  distance= (experimentalData[velocity_ms]*gravity_Ms)
-
-    print(f"The gun selected for the experiment is {experimentalData.gun}. The caliber of {experimentalData.caliber} is {experimentalData.caliber}. The building that the proyectile ")
-
-print("Welcome to the proyectile motion analisis. On this file, it would calculate the motion of the proyectile from a weapon. The weapom selected is the {experimentalData.gun}, with an ammunition of {experimentalData.ammunition} with a velocity of {experimentalData.velocity.Ms}. The proyectile is going to be expelled from the Ocean Tower from a height of 243ft.")
-
 # experimentalData object was made from the variables of the experiment. 
 # experimentalData= {
 
@@ -39,13 +31,21 @@ print("Welcome to the proyectile motion analisis. On this file, it would calcula
 # "gravity_Ms": 9.81
 
 # }
+    time_s = math.sqrt ((2*experimentalData.BuildingHeight) / experimentalData.gravity_Ms)
+    distance_m= (experimentalData.velocity_ms*time_s)
+    #  distance= (experimentalData[velocity_ms]*gravity_Ms)
+    print(f"The gun selected for the experiment is {experimentalData.gun}. The caliber of {experimentalData.caliber}.With a ammunition {experimentalData.ammunition}, with the velocity of {experimentalData.velocity_ms}. The building that the proyectile is been fired from is {experimentalData.Building}, with a altitude of {experimentalData.BuildingHeight}, and would have a duration of {time_s}. The proyectile would go through a velocity of {distance_m}. The shoot would be fired in {planets}, posecing a gravity of {g_ms}")
+
+planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+g_ms = [3.7, 8.87, 9.81, 3.711, 24.79, 10.44, 8.69, 11.15]
+
 experimentalData=ExperimentalData("AS VAL", "9x39mm", "9x39mm SS5 gs", 310, "Ocean Tower", 243, 9.81)
 
 myDataSet= [
-ExperimentalData("AS VAL", "9x39mm", "9x39mm SS5 gs", 900, "Ocean Tower", 243, 9.81),
-ExperimentalData("AS VAL", "9x39mm", "9x39mm SS5 gs", 900, "Nacional plaza", 238, 9.81),
-ExperimentalData("MP5", "9x19mm", "9x19mm Parabellum", 800, "Ocean Tower", 243, 9.81),
-ExperimentalData("MP5", "9x19mm", "9x19mm Parabellum", 800, "Nacional plaza", 238, 9.81)
+ExperimentalData("AS VAL", "9x39mm", "9x39mm SS5 gs", 900, "Ocean Tower", 243, g_ms),
+ExperimentalData("AS VAL", "9x39mm", "9x39mm SS5 gs", 900, "Nacional plaza", 238, g_ms),
+ExperimentalData("MP5", "9x19mm", "9x19mm Parabellum", 800, "Ocean Tower", 243, g_ms),
+ExperimentalData("MP5", "9x19mm", "9x19mm Parabellum", 800, "Nacional plaza", 238, g_ms)
 
 
 ]
@@ -57,7 +57,16 @@ for data in myDataSet:
 myOutputPath= Path(__file__).parents[0]
 myOutputFilePath= os.path.join(myOutputPath, "Projectile-Motion.json")
 
-with open(myOutputPath,"W") as outfile:
+print(myOutputPath)
+
+with open(myOutputPath,"w") as outfile:
     json.dump([data.__dict__ for data in myDataSet], outfile)
+
+# Deserialization
+deserialize=open(myOutputPath)
+experimentJson= json.load(deserialize)
+
+for e in experimentJson:
+    ExperimentalData(**e).run()
     # json.dump(myDataSet[0].__dict__, outfile)
 # ProyectileFunction(experimentalData)
