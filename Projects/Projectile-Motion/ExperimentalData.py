@@ -7,3 +7,5 @@ class ExperimentalData:
         self.Building=Building
         self.BuildingHeight=BuildingHeight
         self.gravity_Ms=gravity_Ms
+
+    
