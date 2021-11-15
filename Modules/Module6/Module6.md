@@ -91,10 +91,14 @@ Why are JSON formats important?
 Create an example of a JSON object with at least 4 values. It may represent anything but it must be original.
 
  - Answer:
-{
-"studentName":"Alexander", ageofstudent: 14, "Grade": "9th grade"
-}
-
+ The perfect taco:
+    def __init__(self, tortilla:str, cheese:str, lettuce:str, tomato:str, meat:str):
+      self.tortilla=tortilla
+      self.cheese=cheese
+      self.lettuce=lettuce
+      self. tomato= tomato
+      self.meat=meat
+        
 What is the difference between serialization and deserialization?
 
  - Answer: The difference between serialization and deserialization is that one is serve to converting an object into a string representing an object, meanwhile the other one is converting a string into an object.
