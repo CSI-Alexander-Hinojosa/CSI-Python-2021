@@ -3,6 +3,7 @@ from ExperimentalData import ExperimentalData
 import os
 from pathlib import Path 
 import json
+# Alexander Hinojosa Martínez, projectile motion project. 
 
 # defining ProyectileFunction
 def ProyectileFunction(experimentalData:ExperimentalData):
