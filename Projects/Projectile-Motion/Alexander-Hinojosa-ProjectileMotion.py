@@ -30,18 +30,18 @@ def ProyectileFunction(experimentalData:ExperimentalData):
 # "BuildingHeight": 243,
 
 # "gravity_Ms": 9.81
-
+# Planets and gravities
 # }
-    time_s = math.sqrt ((2*experimentalData.BuildingHeight) / experimentalData.gravity_Ms)
+    planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
+    g_ms = [3.7, 8.87, 9.81, 3.711, 24.79, 10.44, 8.69, 11.15]
+
+    planet= planets.index(experimentalData.planet)
+
+    time_s = math.sqrt ((2*experimentalData.BuildingHeight) / g_ms[planet])
     distance_m= (experimentalData.velocity_ms*time_s)
     #  distance= (experimentalData[velocity_ms]*gravity_Ms)
-    print(f"The gun selected for the experiment is {experimentalData.gun}. The caliber of {experimentalData.caliber}.With a ammunition {experimentalData.ammunition}, with the velocity of {experimentalData.velocity_ms}. The building that the proyectile is been fired from is {experimentalData.Building}, with a altitude of {experimentalData.BuildingHeight}, and would have a duration of {time_s}. The proyectile would go through a velocity of {distance_m}. The shoot would be fired in {planets}, posecing a gravity of {g_ms}")
+    print(f"The gun selected for the experiment is {experimentalData.gun}. The caliber of {experimentalData.caliber}.With a ammunition {experimentalData.ammunition}, with the velocity of {experimentalData.velocity_ms}. The building that the proyectile is been fired from is {experimentalData.Building}, with a altitude of {experimentalData.BuildingHeight}, and would have a duration of {time_s}. The proyectile would go through a velocity of {distance_m}. The shoot would be fired in {experimentalData.planet}, posecing a gravity of {g_ms[planet]}")
 
-
-
-# Planets and gravities
-planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
-g_ms = [3.7, 8.87, 9.81, 3.711, 24.79, 10.44, 8.69, 11.15]
 
 # Original Variable
 # experimentalData=ExperimentalData("AS VAL", "9x39mm", "9x39mm SS5 gs", 310, "Ocean Tower", 243, 9.81)
@@ -66,7 +66,6 @@ ExperimentalData("MP5", "9x19mm", "9x19mm Parabellum", 800, "Nacional plaza", 23
 for data in myDataSet:
     print("\n----------------------------------------------------------------------\n")
     ProyectileFunction(data)
-
 
 
 # Serialization
