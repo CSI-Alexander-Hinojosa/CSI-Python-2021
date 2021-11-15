@@ -4,18 +4,7 @@ import os
 from pathlib import Path 
 import json
 
-
-# gun= "AS VAL"
-# caliber= "9x39mm"
-# ammunition= "9x39mm SS5 gs"
-# velocity_ms= 900
-
-# Building= "Ocean Tower"
-# BuildingHeight= 243
-
-# gravity_Ms = 9.81
-
-
+# defining ProyectileFunction
 def ProyectileFunction(experimentalData:ExperimentalData):
 
 # experimentalData object was made from the variables of the experiment. 
@@ -32,21 +21,24 @@ def ProyectileFunction(experimentalData:ExperimentalData):
 # "gravity_Ms": 9.81
 # Planets and gravities
 # }
+
+# planet with gravities list
     planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"]
     g_ms = [3.7, 8.87, 9.81, 3.711, 24.79, 10.44, 8.69, 11.15]
 
     planet= planets.index(experimentalData.planet)
 
+# time and distance calculation
     time_s = math.sqrt ((2*experimentalData.BuildingHeight) / g_ms[planet])
     distance_m= (experimentalData.velocity_ms*time_s)
     #  distance= (experimentalData[velocity_ms]*gravity_Ms)
-    print(f"The gun selected for the experiment is {experimentalData.gun}. The caliber of {experimentalData.caliber}.With a ammunition {experimentalData.ammunition}, with the velocity of {experimentalData.velocity_ms}. The building that the proyectile is been fired from is {experimentalData.Building}, with a altitude of {experimentalData.BuildingHeight}, and would have a duration of {time_s}. The proyectile would go through a velocity of {distance_m}. The shoot would be fired in {experimentalData.planet}, posecing a gravity of {g_ms[planet]}")
+
+    # Descriptive Paragraph
+    print(f"The gun selected for the experiment is {experimentalData.gun}. The caliber of {experimentalData.caliber}. With an ammunition {experimentalData.ammunition}, with the velocity of {experimentalData.velocity_ms}. The building that the proyectile is being fired from is {experimentalData.Building}, with an altitude of {experimentalData.BuildingHeight}, and would have a duration of {time_s}. The projectile would go through a velocity of {distance_m}. The shoot would be fired in {experimentalData.planet}, possessing a gravity of {g_ms[planet]}.")
 
 
 # Original Variable
 # experimentalData=ExperimentalData("AS VAL", "9x39mm", "9x39mm SS5 gs", 310, "Ocean Tower", 243, 9.81)
-
-
 
 # My variations
 myDataSet= [
@@ -57,12 +49,12 @@ ExperimentalData("MP5", "9x19mm", "9x19mm Parabellum", 800, "Nacional plaza", 23
 
 ]
 
-
-
 # for data in myDataSet:
 
 #     print("\n----------------------------------------------------------------------\n")
 #     ProyectileFunction(data)
+
+# Dataset
 for data in myDataSet:
     print("\n----------------------------------------------------------------------\n")
     ProyectileFunction(data)
@@ -74,10 +66,8 @@ myOutputFilePath= os.path.join(myOutputPath, "Projectile-Motion.json")
 
 print(myOutputPath)
 
-with open(myOutputPath,"w") as outfile:
+with open(myOutputPath,'w') as outfile:
     json.dump([data.__dict__ for data in myDataSet], outfile)
-
-
 
 # Deserialization
 deserialize=open(myOutputPath)
