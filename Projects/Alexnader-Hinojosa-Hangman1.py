@@ -1,6 +1,15 @@
 import random
 
-word_list = ["Brazilia","Buenos Aires", "Lima", "Asunción", "San Salvador", "Sucre", "Bogota", "Caracas", "Quito", "San José"]
+word_list = ["Brasília",
+"BuenosAires", 
+"Lima", 
+"Asunción",
+"SanSalvador", 
+"Sucre",
+"Bogota",
+"Caracas",
+"Quito",
+"SanJosé"]
 
 # Cual es la capital de Brazil- Brazilia
 # Cual es la capital de Agentina- Buenos Aires 
@@ -15,20 +24,20 @@ word_list = ["Brazilia","Buenos Aires", "Lima", "Asunción", "San Salvador", "Su
 # Cual es la capital de Costa Rica- San José
 
 def get_word (word_list):
-    word= random(word_list)
+    word= random.choice(word_list)
     return word.upper()
 
 # .upper()-para colocar una palabra en mayuscula.
 
 
 def play(word):
-    word_completion= "_" * len (word)
+    word_completion= "-" * len (word)
     guessed=False
     guessed_letters = []
-    guessed_words=[]
+    guessed_words = []
     tries=6 
     print("Hola, jueguemos a colgado")
-    print("Tema: Bienvenidos a LatinoAmerica.")
+    print("Tema: Capitales de LatinoAmerica.")
     print(display_Hangman(tries))
     print(word_completion)
     print("\n")
@@ -44,8 +53,33 @@ def play(word):
             else:
                 ("Bien hecho", guess, "esta en la palabra!")
                 guessed_letters.append(guess)
+                word_as_list = list(word_completion)
+                indices= [i for i, letter in enumerate(word) if letter==guess]
+                for index in indices:
+                    word_as_list[index]=guess
+                word_completion="".join(word_as_list)
+                if "_" not in word_completion:
+                    guess=True 
+        elif len(guess)==len(word) and guess.isalpha():
+            if guess in guessed_words:
+                print("Ya usastes", guess,"!")
+            elif guess != word:
+                print(guess,"No esta en la palabra :(")
+                tries-=1
+                guessed_words.append(guess)
+            else:
+                guessed = True
+                word_completion=word
+        else:
+            print("Invalid input")
+        print(display_Hangman(tries))
+        print(word_completion)
+        print("\n") 
 
-
+    if guessed:
+        print("Enorabuena, has acertado la palabra")
+    else:
+        print("Lo siento, pero se te han acabado las vidas. :( La palabra era" +word+ "Mejor suerte la proxima")
 
 
 
@@ -135,3 +169,15 @@ def display_Hangman(tries):
                                            I
 --------------------------------------------
 """]
+
+    return stages[tries]
+
+def main ():
+    word=get_word(word_list)
+    play (word)
+    while input("Quieres jugar de nuevo? (SI/NO)").upper()=="SI":
+        word=get_word(word_list)
+        play (word)
+if __name__== "__main__":
+    main()
+
