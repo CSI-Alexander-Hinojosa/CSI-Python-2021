@@ -1,17 +1,7 @@
 import random
+word_list = ["Brasília","BuenosAires", "Lima", "Asunción", "SanSalvador", "Sucre", "Bogota", "Caracas", "Quito", "SanJosé"]
 
-word_list = ["Brasília",
-"BuenosAires", 
-"Lima", 
-"Asunción",
-"SanSalvador", 
-"Sucre",
-"Bogota",
-"Caracas",
-"Quito",
-"SanJosé"]
-
-# Cual es la capital de Brazil- Brazilia
+# Cual es la capital de Brazil- Brasília
 # Cual es la capital de Agentina- Buenos Aires 
 # Cual es la capital de Perú- Lima 
 # Cual es la capital de Paraguay- Asunción
@@ -31,7 +21,7 @@ def get_word (word_list):
 
 
 def play(word):
-    word_completion= "-" * len (word)
+    word_completion= "-" * len(word)
     guessed=False
     guessed_letters = []
     guessed_words = []
@@ -48,17 +38,17 @@ def play(word):
                 print("Ya usastes", guess,"!")
             elif guess not in word:
                 print(guess,"No esta en la palabra :(")
-                tries-=1
+                tries -= 1
                 guessed_letters.append(guess)
             else:
-                ("Bien hecho", guess, "esta en la palabra!")
+                print("Bien hecho", guess, "esta en la palabra!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
                 indices= [i for i, letter in enumerate(word) if letter==guess]
                 for index in indices:
                     word_as_list[index]=guess
-                word_completion="".join(word_as_list)
-                if "_" not in word_completion:
+                word_completion= "".join(word_as_list)
+                if "-" not in word_completion:
                     guess=True 
         elif len(guess)==len(word) and guess.isalpha():
             if guess in guessed_words:
@@ -69,59 +59,58 @@ def play(word):
                 guessed_words.append(guess)
             else:
                 guessed = True
-                word_completion=word
+                word_completion = word
         else:
-            print("Invalid input")
+            print("Input inválido")
         print(display_Hangman(tries))
         print(word_completion)
         print("\n") 
 
     if guessed:
-        print("Enorabuena, has acertado la palabra")
+        print("Enhorabuena, has acertado la palabra :)")
     else:
-        print("Lo siento, pero se te han acabado las vidas. :( La palabra era" +word+ "Mejor suerte la proxima")
+        print("Lo siento, pero se te han acabado las vidas. :( La palabra era" + word + "Mejor suerte la próxima")
 
 
 
 def display_Hangman(tries):
-    stages= ["""
+    stages = [  """
                         ____________________
                         |                  I
                         |                  I
                         O                  I
-                       /|\                 I
+                       /|\\                I
                         |                  I
-                       / \                 I
+                       / \\                I
                                            I
                                            I
 --------------------------------------------
-""",
-
-"""
+                        """,
+                        """
                         ____________________
                         |                  I
                         |                  I
                         O                  I
-                       /|\                 I
+                       /|\\                I
                         |                  I
                        /                   I
                                            I
                                            I
 --------------------------------------------
-""",
-"""
+                        """,
+                        """
                         ____________________
                         |                  I
                         |                  I
                         O                  I
-                       /|\                 I
+                       /|\\                I
                         |                  I
                                            I
                                            I
                                            I
 --------------------------------------------
-""",
-"""
+                        """,
+                        """
                         ____________________
                         |                  I
                         |                  I
@@ -132,8 +121,8 @@ def display_Hangman(tries):
                                            I
                                            I
 --------------------------------------------
-""",
-"""
+                        """,
+                        """
                         ____________________
                         |                  I
                         |                  I
@@ -144,8 +133,8 @@ def display_Hangman(tries):
                                            I
                                            I
 --------------------------------------------
-""",
-"""
+                        """,
+                        """
                         ____________________
                         |                  I
                         |                  I
@@ -156,8 +145,8 @@ def display_Hangman(tries):
                                            I
                                            I
 --------------------------------------------
-""",
-"""
+                        """,
+                        """
                         ____________________
                         |                  I
                         |                  I
@@ -168,16 +157,17 @@ def display_Hangman(tries):
                                            I
                                            I
 --------------------------------------------
-"""]
-
+                        """
+    ]
     return stages[tries]
 
-def main ():
-    word=get_word(word_list)
-    play (word)
-    while input("Quieres jugar de nuevo? (SI/NO)").upper()=="SI":
-        word=get_word(word_list)
-        play (word)
+def main():
+    word = get_word(word_list)
+    play(word)
+    while input("Quieres jugar de nuevo? (SI/NO)").upper() == "SI":
+        word = get_word(word_list)
+        play(word)
+
 if __name__== "__main__":
     main()
 
