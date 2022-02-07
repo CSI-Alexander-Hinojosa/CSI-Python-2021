@@ -14,21 +14,21 @@ word_list = ["Brasília","BuenosAires", "Lima", "Asunción", "SanSalvador", "Suc
 # Cual es la capital de Costa Rica- San José
 
 def get_word (word_list):
-    word= random.choice(word_list)
+    word = random.choice (word_list)
     return word.upper()
 
 # .upper()-para colocar una palabra en mayuscula.
 
 
-def play(word):
-    word_completion= "-" * len(word)
-    guessed=False
-    guessed_letters = []
-    guessed_words = []
+def play (word):
+    word_completion= "-" * len (word)
+    guessed= False
+    guessed_letters =[]
+    guessed_words =[]
     tries=6 
     print("Hola, jueguemos a colgado")
     print("Tema: Capitales de LatinoAmerica.")
-    print(display_Hangman(tries))
+    print(display_hangman(tries))
     print(word_completion)
     print("\n")
     while not guessed and tries > 0:
@@ -39,7 +39,7 @@ def play(word):
             elif guess not in word:
                 print(guess,"No esta en la palabra :(")
                 tries -= 1
-                guessed_letters.append(guess)
+                guessed_letters.append (guess)
             else:
                 print("Bien hecho", guess, "esta en la palabra!")
                 guessed_letters.append(guess)
@@ -47,7 +47,7 @@ def play(word):
                 indices= [i for i, letter in enumerate(word) if letter==guess]
                 for index in indices:
                     word_as_list[index]=guess
-                word_completion= "".join(word_as_list)
+                word_completion= "".join (word_as_list)
                 if "-" not in word_completion:
                     guess=True 
         elif len(guess)==len(word) and guess.isalpha():
@@ -56,13 +56,13 @@ def play(word):
             elif guess != word:
                 print(guess,"No esta en la palabra :(")
                 tries-=1
-                guessed_words.append(guess)
+                guessed_words.append (guess)
             else:
                 guessed = True
                 word_completion = word
         else:
             print("Input inválido")
-        print(display_Hangman(tries))
+        print(display_hangman(tries))
         print(word_completion)
         print("\n") 
 
@@ -73,7 +73,7 @@ def play(word):
 
 
 
-def display_Hangman(tries):
+def display_hangman (tries):
     stages = [  """
                         ____________________
                         |                  I
@@ -159,13 +159,13 @@ def display_Hangman(tries):
 --------------------------------------------
                         """
     ]
-    return stages[tries]
+    return stages [tries]
 
 def main():
-    word = get_word(word_list)
+    word = get_word (word_list)
     play(word)
-    while input("Quieres jugar de nuevo? (SI/NO)").upper() == "SI":
-        word = get_word(word_list)
+    while input("Quieres jugar de nuevo? (Y/N)").upper() == "Y":
+        word = get_word (word_list)
         play(word)
 
 if __name__== "__main__":
