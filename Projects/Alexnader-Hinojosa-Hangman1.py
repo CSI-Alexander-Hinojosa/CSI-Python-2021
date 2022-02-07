@@ -33,7 +33,7 @@ def play (word):
     print("\n")
     while not guessed and tries > 0:
         guess=input("Adivina una letra o palabra ").upper()
-        if len(guess)==1 and guess.isalpha():
+        if len(guess) ==1 and guess.isalpha():
             if guess in guessed_letters:
                 print("Ya usastes", guess,"!")
             elif guess not in word:
@@ -44,7 +44,7 @@ def play (word):
                 print("Bien hecho", guess, "esta en la palabra!")
                 guessed_letters.append(guess)
                 word_as_list = list(word_completion)
-                indices= [i for i, letter in enumerate(word) if letter==guess]
+                indices= [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
                     word_as_list[index]=guess
                 word_completion= "".join (word_as_list)
@@ -55,7 +55,7 @@ def play (word):
                 print("Ya usastes", guess,"!")
             elif guess != word:
                 print(guess,"No esta en la palabra :(")
-                tries-=1
+                tries-= 1
                 guessed_words.append (guess)
             else:
                 guessed = True
