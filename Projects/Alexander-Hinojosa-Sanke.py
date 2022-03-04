@@ -1,4 +1,5 @@
 from email import message
+from tkinter import Y
 import pygame        
 pygame.init()
 import time
@@ -13,7 +14,8 @@ violet= (237, 28, 234) # Score
 green= (101, 250, 95) # Fruit
 blue= (15, 113, 214) # Snake
 orange= (214, 120, 15) # Game over
-yellow= (166, 250, 17) # Background 
+black= (0,0,0) 
+# yellow= (166, 250, 17) # Background 
 
 dis_widht=500
 dis_height=400
@@ -29,10 +31,15 @@ snake_speed = 15
 
 snake_block=10
 font_style= pygame.font.SysFont(None, 25)
+score_font= pygame.font.SysFont(None, 25)
+
+def My_Score(score):
+    value = score_font.render("Your score is:"+ str(score), True, violet)
+    dis.blit(value, [0, 0])
 
 def my_snake(snake_block, snake_list):
     for x in snake_list:
-        pygame.draw.rect(dis, blue, [x[0], x[1], snake_block])
+        pygame.draw.rect(dis, blue, [x[0], x[1], snake_block, snake_block])
 
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
@@ -56,7 +63,7 @@ def game_loop():
 
     while not game_over:
         while game_close ==True:
-            dis.fill(yellow)
+            dis.fill(black)
             message("F, press Q-Quit or P-Play again", orange)
             pygame.display.update()
 
@@ -91,7 +98,7 @@ def game_loop():
 
         x1 += x1_change
         y1 += y1_change
-        dis.fill(yellow)
+        dis.fill(black)
 
     # Al realizar movimiento vertical, negativo (-) es hacia arriba, mientras que positivo (+) es hacia abajo.
 
@@ -109,6 +116,7 @@ def game_loop():
                 game_close == True
 
         my_snake(snake_block, snake_List)
+        My_Score(length_of_snake - 1)
 
         pygame.display.update()
         
