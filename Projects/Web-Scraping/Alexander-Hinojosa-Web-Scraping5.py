@@ -1,4 +1,3 @@
-from http.client import PRECONDITION_REQUIRED
 import requests
 import bs4
 
