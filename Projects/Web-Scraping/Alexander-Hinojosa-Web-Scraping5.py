@@ -1,5 +1,6 @@
 import requests
 import bs4
+# Chicago Heights, Illinois
 
 website = requests.get("https://forecast.weather.gov/MapClick.php?lat=41.50730000000004&lon=-87.63386499999996#.Yks1OSjMLIV")
 forecast = bs4.BeautifulSoup(website.content, "html.parser")
